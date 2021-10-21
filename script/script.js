@@ -11,10 +11,12 @@
  */
 
 var button = document.getElementById("roll");
+var rollResult = document.getElementById("rollResult");
 
 function rollDice() {
   let rand = Math.floor(Math.random() * 6 + 1);
   console.log(rand);
+  return (rollResult.innerHTML = rand);
 }
 
 button.addEventListener("click", rollDice);
