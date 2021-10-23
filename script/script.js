@@ -115,11 +115,19 @@ function dice() {
   p1 ? activePlayer(p1) : activePlayer(p2);
 }
 */
-
+//newGame
+function newGame() {
+  score = 0;
+  currentScoreP1.innerHTML = score;
+  currentScoreP2.innerHTML = score;
+  holdResultP2.innerHTML = score;
+  holdResultP1.innerHTML = score;
+}
 //victory
 function victory() {
   victorySound.play();
   alert("Victory");
+  newGame();
 }
 
 // ! Rand Button
