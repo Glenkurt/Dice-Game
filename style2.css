@@ -1,0 +1,42 @@
+h1 {
+  text-align: center;
+}
+.round-player {
+  text-align: center;
+}
+
+.game-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 15% 80px;
+}
+
+.pic {
+  height: 220px;
+  min-width: 100px;
+}
+
+/** Player side */
+.player-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 2;
+}
+
+/** button-wrapper */
+
+.btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+button {
+  margin: 20px;
+  padding: 20px;
+  width: 100px;
+  border-radius: 15px 15px 15px 15px;
+}

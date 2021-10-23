@@ -26,12 +26,20 @@ let currentScoreP2 = document.getElementById("currentScoreP2");
 let holdResultP1 = document.getElementById("holdResultP1");
 let holdResultP2 = document.getElementById("holdResultP2");
 
+// text update
+let roundPlayer = document.getElementById("roundPlayer");
+
+//* *? fin DOM*/
+
+// ! Sounds */
+let diceSound = new Audio("sounds/dicesound.mp3");
+let holdSound = new Audio("sounds/holdSound.mp3");
+let victorySound = new Audio("sounds/victorySound.mp3");
+let looseSound = new Audio("sounds/looseSound.mp3");
+
 // Rand
 function rollDice() {
   return Math.floor(Math.random() * 6 + 1);
-  //roundScore += rand;
-  //console.log(roundScore);
-  //return (rollResult.innerHTML = rand);
 }
 
 let p1 = true;
@@ -54,14 +62,45 @@ function nextPlayer() {
   }
 }
 
+//diceSkin
+function diceSkin() {
+  switch (rand) {
+    case 1:
+      rollResult.innerHTML =
+        '<img style="height:150px; width:150px " src="img/diceface/d1.jpg">';
+      break;
+    case 2:
+      rollResult.innerHTML =
+        '<img style="height:150px; width:150px " src="img/diceface/d2.jpg">';
+      break;
+    case 3:
+      rollResult.innerHTML =
+        '<img style="height:150px; width:150px " src="img/diceface/d3.jpg">';
+      break;
+    case 4:
+      rollResult.innerHTML =
+        '<img style="height:150px; width:150px " src="img/diceface/d4.jpg">';
+      break;
+    case 5:
+      rollResult.innerHTML =
+        '<img style="height:150px; width:150px " src="img/diceface/d5.jpg">';
+      break;
+    case 6:
+      rollResult.innerHTML =
+        '<img style="height:150px; width:150px " src="img/diceface/d6.jpg">';
+      break;
+  }
+}
 //dice
 function dice() {
   rand = rollDice();
-  rollResult.innerHTML = rand;
+  diceSkin(rand);
+  diceSound.play();
   switch (rand) {
     case 1:
       console.log("Perdu !");
       score = 0;
+      looseSound.play();
       nextPlayer();
       break;
     default:
@@ -76,6 +115,12 @@ function dice() {
   p1 ? activePlayer(p1) : activePlayer(p2);
 }
 */
+
+//victory
+function victory() {
+  victorySound.play();
+  alert("Victory");
+}
 
 // ! Rand Button
 rollButton.addEventListener(
@@ -108,7 +153,7 @@ holdButton.addEventListener("click", () => {
       rand = 0;
       holdResultP1.innerHTML = scoreP1;
       // Victory condition is test if not next player is call
-      scoreP1 >= 100 ? alert("Victory") : nextPlayer();
+      scoreP1 >= 15 ? victory() : holdSound.play() && nextPlayer();
 
       break;
 
@@ -118,7 +163,7 @@ holdButton.addEventListener("click", () => {
       rand = 0;
       holdResultP2.innerHTML = scoreP2;
       // Victory condition is test if not next player is call
-      scoreP2 >= 100 ? alert("Victory") : nextPlayer();
+      scoreP2 >= 15 ? victory() : holdSound.play() && nextPlayer();
 
       break;
   }
