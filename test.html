@@ -11,13 +11,15 @@
     <header><h1>battle of the Titans</h1></header>
 
     <main>
-      <div id="roundPlayer"> <div>
+      <div >
+       
+        <div>
 
       <div class="game-wrapper">
         <!-- ? A centrer-->
 
         <!-- * left Player 1-->
-        <div class="player-side">
+        <div class="player1-side">
           <img class="pic" src="img/wawa.jpg" />
           <div class="player-1">
             <h2>Dawa</h2>
@@ -29,14 +31,20 @@
         </div>
         <!-- * end player1-->
         <!-- ! center dice & button -->
+        
         <div class="btn-wrapper">
+          <!-- ? Active player -->
+            <p id="roundPlayer"></p> 
+            <!-- button -->  
           <button id="rollButton">Rand</button>
           <button id="holdButton">Hold</button>
-          <div id="rollResult">0</div>
+          <div id="rollResult">dé</div>
+          <!-- ? Action  feed-->
+          <p id="actionR"></p> 
         </div>
         <!-- ! end dice & button -->
         <!-- * left Player 2-->
-        <div class="player-side">
+        <div class="player2-side">
           <img class="pic" src="img/foggy.jpg" />
           <div class="player-2">
             <h2>Foggy</h2>

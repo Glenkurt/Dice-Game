@@ -28,6 +28,11 @@ let holdResultP2 = document.getElementById("holdResultP2");
 
 // text update
 let roundPlayer = document.getElementById("roundPlayer");
+let actionR = document.getElementById("actionR");
+
+// Skin player active
+let dawaSkin = document.querySelector(".player1-side");
+let foggySkin = document.querySelector(".player2-side");
 
 //* *? fin DOM*/
 
@@ -50,15 +55,29 @@ let score = 0;
 let scoreP1 = 0;
 let scoreP2 = 0;
 
+// * ! ACTIVESKIN a finir */
+function activeSkin() {
+  switch (activePlayer) {
+    case p1:
+      dawaSkin.style.border = "solid 2px red";
+      foggySkin.style.border = "solid 2px black";
+    case p2:
+      foggySkin.style.border = "solid 2px red";
+      dawaSkin.style.border = "solid 2px black";
+  }
+}
+
 //nextPlayer
 function nextPlayer() {
   if (p1) {
     p2 = true;
     p1 = false;
     currentScoreP1.innerHTML = score;
+    roundPlayer.innerHTML = "C'est à Foggy de jouer !";
   } else {
     p1 = true;
     currentScoreP2.innerHTML = score;
+    roundPlayer.innerHTML = "C'est à Dawa de jouer !";
   }
 }
 
@@ -96,12 +115,17 @@ function dice() {
   rand = rollDice();
   diceSkin(rand);
   diceSound.play();
+
+  // reset action feed
+  actionR.innerHTML = "";
   switch (rand) {
     case 1:
       console.log("Perdu !");
       score = 0;
       looseSound.play();
       nextPlayer();
+      // afficher perdu action feed
+      actionR.innerHTML = "perdu";
       break;
     default:
       score = score + rand;
@@ -118,6 +142,7 @@ function dice() {
 //newGame
 function newGame() {
   score = 0;
+  activePlayer = p1;
   currentScoreP1.innerHTML = score;
   currentScoreP2.innerHTML = score;
   holdResultP2.innerHTML = score;
@@ -161,7 +186,7 @@ holdButton.addEventListener("click", () => {
       rand = 0;
       holdResultP1.innerHTML = scoreP1;
       // Victory condition is test if not next player is call
-      scoreP1 >= 15 ? victory() : holdSound.play() && nextPlayer();
+      scoreP1 >= 30 ? victory() : holdSound.play() && nextPlayer();
 
       break;
 
@@ -171,7 +196,7 @@ holdButton.addEventListener("click", () => {
       rand = 0;
       holdResultP2.innerHTML = scoreP2;
       // Victory condition is test if not next player is call
-      scoreP2 >= 15 ? victory() : holdSound.play() && nextPlayer();
+      scoreP2 >= 30 ? victory() : holdSound.play() && nextPlayer();
 
       break;
   }

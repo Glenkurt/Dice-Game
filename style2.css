@@ -17,11 +17,22 @@ h1 {
 }
 
 /** Player side */
-.player-side {
-  display: flex;
+/**.player1-side {
+ display: flex;
   flex-direction: column;
   align-items: center;
   flex-grow: 2;
+}
+*/
+
+.player1-side {
+  border: solid;
+  padding: 51px;
+}
+
+.player2-side {
+  border: solid;
+  padding: 51px;
 }
 
 /** button-wrapper */
