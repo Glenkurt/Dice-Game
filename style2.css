@@ -1,3 +1,15 @@
+/*! Font import */
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-size: 1.5em;
+}
+
 h1 {
   text-align: center;
 }
@@ -33,6 +45,12 @@ h1 {
 .player2-side {
   border: solid;
   padding: 51px;
+}
+
+/** activePlayer */
+.skin {
+  box-shadow: 10px 10px 5px 10px rgba(13, 92, 42, 0.75);
+  border: solid 5px rgb(182, 30, 30);
 }
 
 /** button-wrapper */

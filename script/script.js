@@ -25,6 +25,7 @@ let currentScoreP2 = document.getElementById("currentScoreP2");
 // Hold
 let holdResultP1 = document.getElementById("holdResultP1");
 let holdResultP2 = document.getElementById("holdResultP2");
+let scoreUpdate = document.getElementById("scoreUpdate");
 
 // text update
 let roundPlayer = document.getElementById("roundPlayer");
@@ -54,30 +55,27 @@ let rand;
 let score = 0;
 let scoreP1 = 0;
 let scoreP2 = 0;
+let skin = "skin";
 
-// * ! ACTIVESKIN a finir */
-function activeSkin() {
-  switch (activePlayer) {
-    case p1:
-      dawaSkin.style.border = "solid 2px red";
-      foggySkin.style.border = "solid 2px black";
-    case p2:
-      foggySkin.style.border = "solid 2px red";
-      dawaSkin.style.border = "solid 2px black";
-  }
-}
-
-//nextPlayer
+// ! nextPlayer
 function nextPlayer() {
   if (p1) {
     p2 = true;
     p1 = false;
     currentScoreP1.innerHTML = score;
     roundPlayer.innerHTML = "C'est à Foggy de jouer !";
+    currentClass = skin;
+    // ajoute la classe skin au joueur actif
+    dawaSkin.classList.remove(skin);
+    foggySkin.classList.add(skin);
   } else {
     p1 = true;
+    currentClass = skin;
     currentScoreP2.innerHTML = score;
     roundPlayer.innerHTML = "C'est à Dawa de jouer !";
+    // ajoute la classe skin au joueur actif
+    foggySkin.classList.remove(skin);
+    dawaSkin.classList.add(skin);
   }
 }
 
@@ -181,106 +179,26 @@ rollButton.addEventListener(
 holdButton.addEventListener("click", () => {
   switch (activePlayer) {
     case p1:
+      actionR.innerHTML = score + " ajouté au score de Dawa";
       scoreP1 = scoreP1 + score;
       score = 0;
       rand = 0;
       holdResultP1.innerHTML = scoreP1;
+
       // Victory condition is test if not next player is call
-      scoreP1 >= 30 ? victory() : holdSound.play() && nextPlayer();
+      scoreP1 >= 30 ? victory(p1) : holdSound.play() && nextPlayer();
 
       break;
 
     case p2:
+      actionR.innerHTML = score + " ajouté au score de Foggy";
       scoreP2 = scoreP2 + score;
       score = 0;
       rand = 0;
       holdResultP2.innerHTML = scoreP2;
       // Victory condition is test if not next player is call
-      scoreP2 >= 30 ? victory() : holdSound.play() && nextPlayer();
+      scoreP2 >= 30 ? victory(p2) : holdSound.play() && nextPlayer();
 
       break;
   }
 });
-
-/**
- * ! a voir
- */
-
-/*
-function roundScore() {
-  let a = rollResult.value;
-  switch (a) {
-    default:
-      roundScore += a;
-      break;
-  }
-  console.log(a);
-}
-*/
-/*
-function hold() {
-  let a = rollResult;
-  console.log(a);
-  return (holdResult.innerHTML = a);
-}
-//holdButton.addEventListener("click", hold);
-*/
-
-/*
-function e() {
-   console.log(roundScore);
-  return (currentScore.innerHTML = roundScore);
-}
-
-
-
-! backup roll !
-rollButton.addEventListener("click", () => {
-  // roll the dice
-  rand = rollDice();
-  rollResult.innerHTML = rand;
-
-  switch (activePlayer) {
-    case p1:
-      currentScoreP1.innerHTML = score;
-      switch (rand) {
-        case 1:
-          console.log("Perdu !");
-          score = 0;
-          nextPlayer();
-          break;
-        default:
-          score = score + rand;
-          console.log(rand, score);
-          break;
-      }
-      console.log(score);
-      currentScoreP1.innerHTML = score;
-  }
-  // Display rand
-});
-
-! back up  hold!
-// ! Hold Button
-holdButton.addEventListener("click", () => {
-  switch (activePlayer) {
-    case p1:
-      scoreP1 = scoreP1 + score;
-      score = 0;
-      rand = 0;
-      holdResultP1.innerHTML = scoreP1;
-      nextPlayer();
-
-      break;
-
-    case p2:
-      scoreP2 = scoreP2 + score;
-      score = 0;
-      rand = 0;
-      holdResultP2.innerHTML = scoreP2;
-      nextPlayer();
-
-      break;
-  }
-});
-*/
