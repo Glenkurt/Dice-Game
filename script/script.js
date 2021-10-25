@@ -10,6 +10,7 @@
  * Let's start Coding *
  */
 
+// ******************************************************************** //
 //* * From DOM */
 
 // button
@@ -47,11 +48,6 @@ let audios = [diceSound, holdSound, victorySound, looseSound];
 let mutebtn = document.getElementById("mutebtn");
 let mute = "on";
 
-// ! Rand
-function rollDice() {
-  return Math.floor(Math.random() * 6 + 1);
-}
-
 let p1 = true;
 let p2 = false;
 let activePlayer = p1 || p2;
@@ -60,6 +56,53 @@ let score = 0;
 let scoreP1 = 0;
 let scoreP2 = 0;
 let skin = "skin";
+let skin2 = "skin2";
+
+// ******************************************************************** //
+//! test 3dé !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+let cube = document.querySelector(".cube");
+let diceTest = document.querySelector("#diceTest");
+let currentClass = "";
+
+function roll3dice() {
+  rand = rollDice();
+  console.log(rand);
+  let showClass = "show-" + rand;
+  if (currentClass) {
+    cube.classList.remove(currentClass);
+  }
+  cube.classList.add(showClass);
+  currentClass = showClass;
+  diceSound.play();
+  // reset action feed
+  actionR.innerHTML = "";
+  switch (rand) {
+    case 1:
+      console.log("Perdu !");
+      score = 0;
+      looseSound.play();
+      nextPlayer();
+      // afficher perdu action feed
+      actionR.innerHTML = "Perdu !";
+      break;
+    default:
+      score = score + rand;
+      console.log(rand, score);
+      break;
+  }
+}
+
+diceTest.addEventListener("click", roll3dice);
+//! test 3dé !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// ******************************************************************** //
+// ******************************************************************** //
+
+// ? FUNCTION
+// ! Rand
+function rollDice() {
+  return Math.floor(Math.random() * 6 + 1);
+}
 
 // ! nextPlayer
 function nextPlayer() {
@@ -71,14 +114,14 @@ function nextPlayer() {
     currentClass = skin;
     // ajoute la classe skin au joueur actif
     dawaSkin.classList.remove(skin);
-    foggySkin.classList.add(skin);
+    foggySkin.classList.add(skin2);
   } else {
     p1 = true;
     currentClass = skin;
     currentScoreP2.innerHTML = score;
     roundPlayer.innerHTML = "C'est à Dawa de jouer !";
     // ajoute la classe skin au joueur actif
-    foggySkin.classList.remove(skin);
+    foggySkin.classList.remove(skin2);
     dawaSkin.classList.add(skin);
   }
 }
@@ -139,19 +182,20 @@ function dice() {
 // ! newGame
 function newGame() {
   score = 0;
-  activePlayer = p1;
+  scoreP1 = 0;
+  scoreP2 = 0;
   currentScoreP1.innerHTML = score;
   currentScoreP2.innerHTML = score;
   holdResultP2.innerHTML = score;
   holdResultP1.innerHTML = score;
-  scoreP1 = 0;
-  scoreP2 = 0;
+  nextPlayer();
 }
 
 // ! victory
-function victory() {
+function victory(joueur) {
   victorySound.play();
-  alert("Victory");
+  actionR.innerHTML = " Félicitation" + " " + joueur + " gagne le match";
+
   newGame();
 }
 
@@ -177,6 +221,9 @@ rollButton.addEventListener(
   // Display rand
 );
 
+// ******************************************************************** //
+// ******************************************************************** //
+
 // ! Hold Button
 holdButton.addEventListener("click", () => {
   switch (activePlayer) {
@@ -188,7 +235,7 @@ holdButton.addEventListener("click", () => {
       holdResultP1.innerHTML = scoreP1;
 
       // Victory condition is test if not next player is call
-      scoreP1 >= 10 ? victory(p1) : holdSound.play() && nextPlayer();
+      scoreP1 >= 10 ? victory("Dawa") : holdSound.play() && nextPlayer();
 
       break;
 
@@ -199,7 +246,7 @@ holdButton.addEventListener("click", () => {
       rand = 0;
       holdResultP2.innerHTML = scoreP2;
       // Victory condition is test if not next player is call
-      scoreP2 >= 30 ? victory(p2) : holdSound.play() && nextPlayer();
+      scoreP2 >= 10 ? victory("Foggy") : holdSound.play() && nextPlayer();
 
       break;
   }
