@@ -20,7 +20,7 @@ h1 {
 .game-wrapper {
   display: flex;
   justify-content: space-between;
-  margin: 15% 80px;
+  margin: 10% 120px;
 }
 
 .pic {
@@ -40,11 +40,24 @@ h1 {
 .player1-side {
   border: solid;
   padding: 51px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 2;
+}
+
+.holdResult {
 }
 
 .player2-side {
   border: solid;
   padding: 51px;
+  border: solid;
+  padding: 51px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 2;
 }
 
 /** activePlayer */
@@ -68,4 +81,21 @@ button {
   padding: 20px;
   width: 100px;
   border-radius: 15px 15px 15px 15px;
+}
+
+.feed {
+  text-align: center;
+  font-size: 2em;
+}
+
+/** footer */
+/** Mutebtn */
+footer {
+  text-align: center;
+}
+#mute {
+  border: none;
+  width: auto;
+  text-align: center;
+  font-size: 1.5rem;
 }

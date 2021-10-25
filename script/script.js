@@ -15,6 +15,7 @@
 // button
 let rollButton = document.getElementById("rollButton");
 let holdButton = document.getElementById("holdButton");
+let muteButton = document.getElementById("mute");
 
 let rollResult = document.getElementById("rollResult");
 
@@ -35,15 +36,18 @@ let actionR = document.getElementById("actionR");
 let dawaSkin = document.querySelector(".player1-side");
 let foggySkin = document.querySelector(".player2-side");
 
-//* *? fin DOM*/
+//* * fin DOM*/
 
-// ! Sounds */
+// ? Sounds */
 let diceSound = new Audio("sounds/dicesound.mp3");
 let holdSound = new Audio("sounds/holdSound.mp3");
 let victorySound = new Audio("sounds/victorySound.mp3");
 let looseSound = new Audio("sounds/looseSound.mp3");
+let audios = [diceSound, holdSound, victorySound, looseSound];
+let mutebtn = document.getElementById("mutebtn");
+let mute = "on";
 
-// Rand
+// ! Rand
 function rollDice() {
   return Math.floor(Math.random() * 6 + 1);
 }
@@ -79,7 +83,7 @@ function nextPlayer() {
   }
 }
 
-//diceSkin
+// ! diceSkin
 function diceSkin() {
   switch (rand) {
     case 1:
@@ -108,12 +112,11 @@ function diceSkin() {
       break;
   }
 }
-//dice
+// ! dice
 function dice() {
   rand = rollDice();
   diceSkin(rand);
   diceSound.play();
-
   // reset action feed
   actionR.innerHTML = "";
   switch (rand) {
@@ -123,7 +126,7 @@ function dice() {
       looseSound.play();
       nextPlayer();
       // afficher perdu action feed
-      actionR.innerHTML = "perdu";
+      actionR.innerHTML = "Perdu !";
       break;
     default:
       score = score + rand;
@@ -133,11 +136,7 @@ function dice() {
   console.log(score);
 }
 
-/* let activePlayer() => {
-  p1 ? activePlayer(p1) : activePlayer(p2);
-}
-*/
-//newGame
+// ! newGame
 function newGame() {
   score = 0;
   activePlayer = p1;
@@ -145,8 +144,11 @@ function newGame() {
   currentScoreP2.innerHTML = score;
   holdResultP2.innerHTML = score;
   holdResultP1.innerHTML = score;
+  scoreP1 = 0;
+  scoreP2 = 0;
 }
-//victory
+
+// ! victory
 function victory() {
   victorySound.play();
   alert("Victory");
@@ -186,7 +188,7 @@ holdButton.addEventListener("click", () => {
       holdResultP1.innerHTML = scoreP1;
 
       // Victory condition is test if not next player is call
-      scoreP1 >= 30 ? victory(p1) : holdSound.play() && nextPlayer();
+      scoreP1 >= 10 ? victory(p1) : holdSound.play() && nextPlayer();
 
       break;
 
@@ -200,5 +202,22 @@ holdButton.addEventListener("click", () => {
       scoreP2 >= 30 ? victory(p2) : holdSound.play() && nextPlayer();
 
       break;
+  }
+});
+
+// ! MUTE Button
+muteButton.addEventListener("click", () => {
+  if (mute === "on") {
+    for (let audio of audios) {
+      audio.muted = true;
+      mute = "off";
+      mutebtn.innerHTML = "Activer le son";
+    }
+  } else {
+    for (let audio of audios) {
+      audio.muted = false;
+      mute = "on";
+      mutebtn.innerHTML = "Désactiver le son";
+    }
   }
 });

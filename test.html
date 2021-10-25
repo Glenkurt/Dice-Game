@@ -22,11 +22,17 @@
         <div class="player1-side skin">
           <img class="pic" src="img/wawa.jpg" />
           <div class="player-1">
-            <h2>Dawa</h2>
+            <div class="currentScore">
+              <h2>Dawa</h2>
             <h3>Current Score</h3>
             <p id="currentScoreP1">0</p>
-            <h4>Global Score</h4>
-            <p id="holdResultP1">0</p>
+            </div>
+            
+            <div class="holdResult">
+             <h4>Global Score</h4>
+            <p id="holdResultP1">0</p> 
+          </div>
+            
           </div>
         </div>
         <!-- * end player1-->
@@ -34,8 +40,7 @@
         
         <div class="btn-wrapper">
           <!-- ? Active player -->
-           <!-- ? Action  feed-->
-           <span id="actionR"></span> 
+          
              <p id="roundPlayer">"C'est à Dawa de jouer !"</p> 
             <!-- button -->  
           <button id="rollButton">Rand</button>
@@ -48,15 +53,28 @@
         <div class="player2-side">
           <img class="pic" src="img/foggy.jpg" />
           <div class="player-2">
-            <h2>Foggy</h2>
-            <h3>Current Score</h3>
-            <p id="currentScoreP2">0</p>
-            <h4>Global Score</h4>
-            <p id="holdResultP2">0</p>
+            <div class="currentScore">
+              <h2>Foggy</h2>
+              <h3>Current Score</h3>
+              <p id="currentScoreP2">0</p>
+            </div>
+            
+            <div class="holdResult">
+                <h4>Global Score</h4>
+                <p id="holdResultP2">0</p>
+            </div>
+            
           </div>
         </div>
         <!-- * end player1-->
       </div>
+      <!-- ? Action  feed-->
+      <div class="feed">         
+         <p id="scoreUpdate">  <span id="actionR"></span> </p> 
+      </div>
+      <footer>
+        <button id="mute"><span id="mutebtn">Désactiver le son</span></button>
+      </footer>
     </main>
     <script src="/script/script.js"></script>
   </body>
