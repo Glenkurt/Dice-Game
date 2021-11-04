@@ -10,7 +10,7 @@ body {
   font-size: 1.5em;
   background-image: linear-gradient(
     to right,
-    #d9ed92 0%,
+    #e09f3e 0%,
     #b8cbb8 0%,
     #b8cbb8 0%,
     #e2c58b 30%,
@@ -19,23 +19,77 @@ body {
   );
   color: #540b0e;
 }
-h1 {
-  text-align: center;
+
+/* ! ********************************************************************  //
+*                         HEADER                                           //
+* ! ********************************************************************   */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 15%;
 }
 
+.nav-game {
+  display: flex;
+  width: 25%;
+}
+
+h1 {
+  display: flex;
+  font-size: 2rem;
+  justify-content: center;
+  width: 50%;
+}
+
+.nav-sound {
+  display: flex;
+  justify-content: flex-end;
+  width: 25%;
+}
+/** Mutebtn */
+#mute {
+  background: rgba(0, 0, 0, 0);
+  width: auto;
+}
+#on {
+  display: none;
+}
+
+/* New game button + icon */
+#gameButton {
+  background: rgba(0, 0, 0, 0);
+  width: auto;
+  display: flex;
+}
+.material-icons-outlined {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2rem; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  margin-right: 5px;
+}
+
+/* ! ********************************************************************  //
+*                         MAIN                                             //
+* ! ********************************************************************   */
+main  {
+  height: 75%;
+}
 .game-wrapper {
   display: flex;
-  padding: 15px;
-
-  width: 100%;
+  padding: 10px;
+  margin: 10px 20%;
+  margin-bottom: 2em;
   justify-content: space-around;
-}
-
-.pic {
-  height: 220px;
-  min-width: 100px;
-  margin-bottom: 20px;
-  border-radius: 100%;
 }
 
 .player1-side {
@@ -50,6 +104,13 @@ h1 {
   text-align: center;
 }
 
+.pic {
+  height: 220px;
+  min-width: 100px;
+  margin-bottom: 20px;
+  border-radius: 100%;
+}
+
 .result {
   background-color: #d9ed92;
   padding: 5px;
@@ -57,6 +118,28 @@ h1 {
   width: 100%;
   border-radius: 20px 20px 20px 20px;
   box-shadow: 5px 5px 10px;
+}
+
+/** button-wrapper */
+
+.btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 1;
+  min-width: 30%;
+  margin: 5%;
+}
+
+button {
+  margin: 20px;
+  padding: 20px;
+  width: 200px;
+  border-radius: 15px 15px 15px 15px;
+  background-color: #9e2a2b;
+  border: none;
+  font-size: 1.5rem;
 }
 
 .player2-side {
@@ -84,49 +167,19 @@ h1 {
 }
 
 .skin2 {
-  box-shadow: -10px 10px 5px 10px rgba(13, 92, 42, 0.75);
+  box-shadow: -10px 10px 5px 10px rgba(36, 43, 133, 0.75);
   border: solid 5px rgb(182, 30, 30);
 }
 
-/** button-wrapper */
+/* ! ********************************************************************  //
+*                         3D DICE                                          //
+* ! ********************************************************************   */
 
-.btn-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  flex-shrink: 1;
-}
-
-button {
-  margin: 20px;
-  padding: 20px;
-  width: 200px;
-  border-radius: 15px 15px 15px 15px;
-  background-color: #9e2a2b;
-  border: none;
-  font-size: 1.5rem;
-}
-
-.feed {
-  text-align: center;
-  font-size: 1.5em;
-  margin-top: 20px;
-}
-
-/** footer */
-/** Mutebtn */
-
-footer {
-  text-align: center;
-}
-/*! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
-/*! TEST dé 3D*/
 .scene {
   width: 200px;
   height: 200px;
   margin: 20px;
-
+  margin-bottom: 2em;
   perspective: 600px;
 }
 
@@ -162,36 +215,13 @@ footer {
   position: absolute;
   width: 200px;
   height: 200px;
-  border: 4px solid white;
+  border: 3px solid white;
   line-height: 200px;
   font-size: 40px;
   font-weight: bold;
-  color: white;
+  color: black;
   text-align: center;
-}
-
-.cube-face1 {
-  background: black;
-  opacity: 0.75;
-}
-.cube-face2 {
-  background: black;
-  opacity: 0.75;
-}
-.cube-face3 {
-  background: black;
-  opacity: 0.75;
-}
-.cube-face4 {
-  background: black;
-  opacity: 0.75;
-}
-.cube-face5 {
-  background: black;
-  opacity: 0.75;
-}
-.cube-face6 {
-  background: black;
+  background-color: #335c67;
   opacity: 0.75;
 }
 
@@ -212,4 +242,267 @@ footer {
 }
 .cube-face6 {
   transform: rotateX(-90deg) translateZ(100px);
+}
+
+/* ! ********************************************************************  //
+*                         FOOTER                                           //
+* ! ********************************************************************   */
+
+footer {
+  height: 15%;
+  text-align: center;
+}
+
+.feed {
+  display: block;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+/* ! ********************************************************************  //
+*                        HOVER:EFFECT                                      //
+* ! ********************************************************************   */
+
+#gameButton:hover {
+  color: #540b0e;
+  font-weight: bolder;
+}
+
+#on:hover {
+  color: #540b0e;
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+#off:hover {
+  color: #540b0e;
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+/* ! ********************************************************************  //
+*                        MEDIA QUERIES                                     //
+* ! ********************************************************************   */
+
+@media (max-width: 1400px) {
+  main,
+  .feed,
+  #currentScoreP1,
+  #currentScoreP2,
+  .material-icons-outlined,
+  button {
+    font-size: 1rem;
+  }
+  .nav-game {
+    min-width: 144px;
+  }
+}
+
+@media (max-width: 1070px) {
+  body {
+    height: 100vh;
+  }
+
+  header {
+    height: 60px;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .nav-game,
+  .nav-sound {
+    flex-shrink: 1;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+    flex-grow: 2;
+  }
+
+  .nav-game {
+    justify-content: flex-start;
+  }
+  #gameButton {
+    min-width: 140px;
+  }
+  button {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .scene {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    margin-bottom: 2em;
+    perspective: 100px;
+  }
+  .cube {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: translateZ(-100px);
+    transition: transform 1s;
+  }
+
+  .cube-face {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 3px solid white;
+    line-height: 100px;
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    background-color: #335c67;
+    opacity: 0.75;
+  }
+  .cube-face1 {
+    transform: rotateY(0deg) translateZ(50px);
+  }
+  .cube-face2 {
+    transform: rotateY(180deg) translateZ(50px);
+  }
+  .cube-face3 {
+    transform: rotateY(90deg) translateZ(50px);
+  }
+  .cube-face4 {
+    transform: rotateY(-90deg) translateZ(50px);
+  }
+  .cube-face5 {
+    transform: rotateX(90deg) translateZ(50px);
+  }
+  .cube-face6 {
+    transform: rotateX(-90deg) translateZ(50px);
+  }
+
+  #roundPlayer,
+  .feed {
+    text-align: center;
+  }
+
+  .player1-side,
+  .player2-side,
+  .btn-wrapper {
+    flex-shrink: 1;
+  }
+  .game-wrapper {
+    margin: 10 2%;
+  }
+
+  pic {
+    height: 110px;
+    min-width: auto;
+    margin-bottom: 10px;
+    border-radius: 100%;
+  }
+
+  @media (max-width: 800px) {
+    body {
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 1.2rem;
+      left: 15px;
+    }
+
+    .pic {
+      height: 150px;
+      min-width: 0;
+    }
+    .skin {
+      box-shadow: 5px 5px 5px 5px rgba(13, 92, 42, 0.75);
+      border: solid 4px rgb(182, 30, 30);
+    }
+    .skin2 {
+      box-shadow: -5px 5px 5px 5px rgba(36, 43, 133, 0.75);
+      border: solid 4px rgb(182, 30, 30);
+    }
+  }
+
+  @media (max-width: 600px) {
+    main,
+    h1,
+    h2,
+    #currentScoreP1,
+    #currentScoreP2,
+    .material-icons-outlined,
+    button {
+      font-size: 0.7rem;
+    }
+  }
+
+  .nav-game {
+    min-width: 80px;
+  }
+  .pic {
+    height: 100px;
+    min-width: 0;
+  }
+
+  .player1-side,
+  .player2-side {
+    padding: 5px;
+    margin: auto;
+  }
+
+  button {
+    margin: 2px;
+    padding: 2px;
+  }
+}
+
+@media (max-width: 500px) {
+  .scene {
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+    margin-bottom: 2em;
+    perspective: 100px;
+  }
+  .cube {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: translateZ(-100px);
+    transition: transform 1s;
+  }
+
+  .cube-face {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 3px solid white;
+    line-height: 80px;
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    background-color: #335c67;
+    opacity: 0.75;
+  }
+  .cube-face1 {
+    transform: rotateY(0deg) translateZ(40px);
+  }
+  .cube-face2 {
+    transform: rotateY(180deg) translateZ(40px);
+  }
+  .cube-face3 {
+    transform: rotateY(90deg) translateZ(40px);
+  }
+  .cube-face4 {
+    transform: rotateY(-90deg) translateZ(40px);
+  }
+  .cube-face5 {
+    transform: rotateX(90deg) translateZ(40px);
+  }
+  .cube-face6 {
+    transform: rotateX(-90deg) translateZ(40px);
+  }
 }
