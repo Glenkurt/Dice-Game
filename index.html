@@ -1,93 +1,92 @@
 <!DOCTYPE html>
-  <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="style2.css" />
-        <link
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet"
-        />
-    
-        <title>Document</title>
-      </head>
-      <body>
-        <header>
-          <div class="nav-game">
-            <button id="gameButton">
-              <span class="material-icons-outlined hide"> add_circle_outline </span>
-              NEW GAME
-            </button>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style2.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <div class="nav-game">
+        <button id="gameButton">
+          <span class="material-icons-outlined hide"> add_circle_outline </span>
+          NEW GAME
+        </button>
+      </div>
+      <h1>Battle of the Titans</h1>
+      <div class="nav-sound">
+        <button id="mute">
+          <span class="material-icons-outlined" id="off">music_off </span>
+          <span class="material-icons-outlined" id="on"> music_note </span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <div class="game-wrapper">
+        <!-- * left Player 1-->
+        <div class="player1-side skin">
+          <img class="pic" src="img/wawa.jpg" />
+          <div class="player-1">
+            <h2>Dawa</h2>
+            <p id="currentScoreP1">0</p>
           </div>
-          <h1>Battle of the Titans</h1>
-          <div class="nav-sound">
-            <button id="mute">
-              <span class="material-icons-outlined" id="off">music_off </span>
-              <span class="material-icons-outlined" id="on"> music_note </span>
-            </button>
+          <div class="result">
+            <h4>Global Score</h4>
+            <p id="holdResultP1">0</p>
           </div>
-        </header>
-    
-        <main>
-          <div class="game-wrapper">
-            <!-- * left Player 1-->
-            <div class="player1-side skin">
-              <img class="pic" src="img/wawa.jpg" />
-              <div class="player-1">
-                <h2>Dawa</h2>
-                <p id="currentScoreP1">0</p>
-              </div>
-              <div class="result">
-                <h4>Global Score</h4>
-                <p id="holdResultP1">0</p>
-              </div>
+        </div>
+        <!-- * end player1-->
+        <!-- ! center dice & button -->
+
+        <div class="btn-wrapper">
+          <!-- ? Active player -->
+
+          <p id="roundPlayer">C'est à Dawa de jouer !</p>
+          <!-- button -->
+          <button id="rollButton">Rand</button>
+          <button id="holdButton">Hold</button>
+          <div class="scene">
+            <div class="cube">
+              <div class="cube-face cube-face1">1</div>
+              <div class="cube-face cube-face2">2</div>
+              <div class="cube-face cube-face3">3</div>
+              <div class="cube-face cube-face4">4</div>
+              <div class="cube-face cube-face5">5</div>
+              <div class="cube-face cube-face6">6</div>
             </div>
-            <!-- * end player1-->
-            <!-- ! center dice & button -->
-    
-            <div class="btn-wrapper">
-              <!-- ? Active player -->
-    
-              <p id="roundPlayer">C'est à Dawa de jouer !</p>
-              <!-- button -->
-              <button id="rollButton">Rand</button>
-              <button id="holdButton">Hold</button>
-              <div class="scene">
-                <div class="cube">
-                  <div class="cube-face cube-face1">1</div>
-                  <div class="cube-face cube-face2">2</div>
-                  <div class="cube-face cube-face3">3</div>
-                  <div class="cube-face cube-face4">4</div>
-                  <div class="cube-face cube-face5">5</div>
-                  <div class="cube-face cube-face6">6</div>
-                </div>
-              </div>
-            </div>
-            <!-- ! end dice & button -->
-            <!-- * left Player 2-->
-            <div class="player2-side">
-              <img class="pic" src="img/foggy.jpg" />
-              <div class="player-2">
-                <h2>Foggy</h2>
-                <p id="currentScoreP2">0</p>
-              </div>
-              <div class="result">
-                <h4>Global Score</h4>
-                <p id="holdResultP2">0</p>
-              </div>
-            </div>
-            <!-- * end player2-->
           </div>
-    
-          <footer>
-            <!-- ? Action  feed-->
-            <div class="feed">
-              <p id="scoreUpdate"><span id="actionR">Let's go !</span></p>
-            </div>
-          </footer>
-        </main>
-        <script src="script/script.js"></script>
-      </body>
-    </html>
-    
+        </div>
+        <!-- ! end dice & button -->
+        <!-- * left Player 2-->
+        <div class="player2-side">
+          <img class="pic" src="img/foggy.jpg" />
+          <div class="player-2">
+            <h2>Foggy</h2>
+            <p id="currentScoreP2">0</p>
+          </div>
+          <div class="result">
+            <h4>Global Score</h4>
+            <p id="holdResultP2">0</p>
+          </div>
+        </div>
+        <!-- * end player2-->
+      </div>
+
+      <footer>
+        <!-- ? Action  feed-->
+        <div class="feed">
+          <p id="scoreUpdate"><span id="actionR">Let's go !</span></p>
+        </div>
+      </footer>
+    </main>
+    <script src="script/script.js"></script>
+  </body>
+</html>

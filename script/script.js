@@ -1,6 +1,4 @@
 /**
- * ! Functions to develop => newGame() / roll() / hold(e) / nextPlayer() / activePlayer()
- * ? Variables needed : player1 / player2 / diceResult / currentScore / scrorePlayer1 / scorePlayer2 /
  *
  * * Rules : - activePlayer can roll dice until he diceResult = 1 or the player click on hold button (wich call hold function)
  * *         - player win when scorPlayer* >=  100
@@ -102,30 +100,6 @@ function roll3dice() {
   let showClass = "show-" + rand;
   console.log("Nouveau rand " + rand);
 
-  // ? ajouter une condition, si currentClass = showClass afficher une rotation 360°
-  //?  (si deux rands de suite sont égaux)<!DOCTYPE html>
-   
-  /**  ! en test
- * !  // je test si on a deux rand de suite de valeur égale
-
- *   if (showClass === previusClass) {
-    console.log("deux rand égaux");
-    cube.classList.add("show-7");
-    currentClass = showClass;
-    previusClass = currentClass;
-    diceSound.play();
-    console.log("-------------");
-  } else {
-    console.log(rand, showClass, currentClass, previusClass);
-    cube.classList.add(showClass);
-    currentClass = showClass;
-    previusClass = currentClass;
-    console.log("*******");
-    diceSound.play();
-    console.log(rand, showClass, currentClass, previusClass);
-    console.log("-------------");
-  }
- */
   if (currentClass) {
     cube.classList.remove(currentClass);
     console.log("*******");
@@ -342,4 +316,3 @@ muteButton.addEventListener("click", () => {
     }
   }
 });
-
